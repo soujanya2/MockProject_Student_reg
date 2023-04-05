@@ -1,0 +1,143 @@
+﻿@*@model IEnumerable<MockProject1.Models.Student>
+
+@{
+    ViewData["Title"] = "ViewAll";
+}
+
+<h1>ViewAll</h1>
+
+<p>
+    <a asp-action="AddStudent">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hobbie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hobbie.HobbyName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@
+
+@model IEnumerable<MockProject1.Models.Student>
+
+@{
+    ViewData["Title"] = "GetAllStudents";
+}
+
+
+<h1 class="text-center" style="font-family:Inter; color:black"><b>Student Record</b></h1>
+
+@if (ViewData["Message"] != null)
+{
+    <script language="javascript">
+        alert('@ViewData["Message"]');
+    </script>
+}
+
+<link rel="stylesheet" href="~/css/StyleSheet.css">
+<p>
+    <input type="button" class="button-1" role="button" value="Enroll" onclick="location.href='@Url.Action("AddStudent", "Student")'" />
+
+</p>
+<table style="font-family:Arial; background-color:white" class="table">
+    <thead>
+        <tr>
+            <th>
+                Student ID
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Course Opted
+            </th>
+            <th>
+                Hobby
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HobbiesName)
+                </td>
+                <td>
+                    <a asp-action="UpdateStudent" asp-route-id="@item.StudentID">Edit</a> |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID },
+                new { onclick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

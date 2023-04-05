@@ -1,0 +1,120 @@
+﻿@*@model MockProject1.Models.Student
+
+@{
+    ViewData["Title"] = "UpdateStudent";
+}
+
+<h1>UpdateStudent</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateStudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StudentID" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseName" class="control-label"></label>
+                <select asp-for="CourseName" class="form-control" asp-items="ViewBag.CourseName"></select>
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HobbiesName" class="control-label"></label>
+                <select asp-for="HobbiesName" class="form-control" asp-items="ViewBag.HobbiesName"></select>
+                <span asp-validation-for="HobbiesName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@
+
+@model MockProject1.Models.Student
+
+@{
+    ViewData["Title"] = "UpdateStudent";
+}
+<body style="background-image: url('https://img.freepik.com/premium-photo/background-topic-training-education-desk-with-books-bookcase-window-defocus-school-concept-greeting-card-with-start-learning_95018-358.jpg');background-repeat: no-repeat;background-attachment: fixed;
+  background-size: 100% 100%;">
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+    <div style="font-family:Arial;background-color:white" class="text-center"
+<h1 style="font-family:Inter;color:Black"><b>Student Details Updation Form</b></h1>
+
+        <h4 style="font-family:Inter;color:green"><b>Please enter the new details to be updated</b></h4>
+<hr />
+<div class="row">
+    <div style="margin: auto" class="col-md-4">
+        <form asp-action="UpdateStudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StudentID" />
+            <div class="form-group">
+                First Name
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Last Name
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                date Of Birth
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Course
+                <select asp-for="CourseName" asp-items=@ViewBag.Courses class="form-control"></select>
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Hobby
+                <select asp-for="HobbiesName" asp-items=@ViewBag.Hobbies class="form-control"></select>
+                <span asp-validation-for="HobbiesName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <br />
+                <input type="submit" class="button-2" role="button" value=" Save " class="btn btn-primary" />
+                <br />
+                <input type="button" class="button-3" role="button" value="Cancel" onclick="location.href='@Url.Action("ViewAll", "Student")'" />
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
