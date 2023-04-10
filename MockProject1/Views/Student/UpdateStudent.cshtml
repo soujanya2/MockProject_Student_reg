@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
                 date Of Birth
-                <input asp-for="DateOfBirth" class="form-control" />
+                <input asp-for="DateOfBirth" max="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">

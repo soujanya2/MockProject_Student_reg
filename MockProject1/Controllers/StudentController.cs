@@ -24,7 +24,7 @@ namespace MockProject1.Controllers
         public IActionResult AddStudent()
         {
             ViewBag.courses = new SelectList(db.Courses, "CourseName", "CourseName");
-            ViewBag.hobbies = new SelectList(db.Hobbys, "HobbyName", "HobbyName");
+            ViewBag.hobbies = new MultiSelectList(db.Hobbys, "HobbyName", "HobbyName");
             return View();
         }
         [HttpPost]
@@ -32,7 +32,6 @@ namespace MockProject1.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.today = DateTime.Now;
                 Student student = repo.AddStudent(id);
                 return RedirectToAction("ViewAll");
             }
